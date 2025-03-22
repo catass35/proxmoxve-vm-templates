@@ -1,6 +1,6 @@
 resource "proxmox_virtual_environment_vm" "t2_micro" {
   name        = "t2-micro"
-  target_node = "proxmoxve"
+  node_name   = "proxmoxve"
   iso         = var.iso_storage
   os_type     = "linux"
   cores       = 1
