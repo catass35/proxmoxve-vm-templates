@@ -18,8 +18,7 @@ resource "proxmox_virtual_environment_vm" "t2_micro" {
 
   disk {
     datastore_id = var.storage_pool
-    size = "16G"
-    type = "scsi"
+    size = 16
     interface = "virtio0"
   }
 
@@ -33,10 +32,10 @@ resource "proxmox_virtual_environment_vm" "t2_micro" {
         address = "dhcp"
       }
     }
+    user_account {
+      username = "ubuntu"
+      password = "ubuntu"
+    }
   }
 
-  user_account {
-    username = "ubuntu"
-    password = "ubuntu"
-  }
 }
