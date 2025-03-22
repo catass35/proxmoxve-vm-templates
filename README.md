@@ -1,0 +1,1 @@
+# proxmoxve-vm-templates
