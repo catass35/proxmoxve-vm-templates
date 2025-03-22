@@ -1,10 +1,16 @@
-variable "proxmox_user" {
-  description = "The Proxmox API user"
+variable "terraform_api_user" {
+  description = "The Terraform API user"
   type        = string
 }
 
+variable "api_token_name" {
+  description = "The Terraform API token name"
+  type=string
+}
+
 variable "api_token" {
-   type=string
+  description = "The Terraform API token"
+  type=string
 }
 
 variable "storage_pool" {
