@@ -9,10 +9,10 @@ terraform {
 
 provider "proxmox" {
   endpoint  = "https://192.168.1.58:8006/"
-  api_token = "${terraform_api_user}@pve!${var.api_token_name}=${var.api_token}"
+  api_token = "${var.terraform_api_user}@pve!${var.api_token_name}=${var.api_token}"
   insecure  = true
   ssh {
     agent    = true
-    username = "${terraform_api_user}"
+    username = "${var.terraform_api_user}"
   }
 }
