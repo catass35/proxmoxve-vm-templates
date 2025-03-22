@@ -1,27 +1,41 @@
 resource "proxmox_virtual_environment_vm" "t2_micro" {
   name        = "t2-micro"
   node_name   = "proxmoxve"
-  iso         = var.iso_storage
-  os_type     = "linux"
-  cores       = 1
-  sockets     = 1
-  memory      = 1024
-  scsihw      = "virtio-scsi-pci"
-  bootdisk    = "scsi0"
 
-  disk {
-    slot     = 0
-    size     = "10G"
-    type     = "scsi"
-    storage  = var.storage_pool
-    storage_type = "lvm"
+  template    = true
+  started     = false
+
+  description = "Managed by Terraform"
+  tags        = ["terraform, "alpine"]
+
+  cpu {
+    cores = 1
   }
 
-  network {
-    model  = "virtio"
+  memory {
+    dedicated = 1024
+  }
+
+  disk {
+    datastore_id = var.storage_pool
+    size = "16G"
+    type = "scsi"
+  }
+
+  network_device {
     bridge = "vmbr0"
   }
 
-  ipconfig0 = "ip=dhcp"
-##  sshkeys   = file(var.ssh_public_key_file)
+  initialization {
+    ip_config {
+      ipv4 {
+        address = "dhcp"
+      }
+    }
+  }
+
+  user_account {
+    username = "ubuntu"
+    password = "ubuntu"
+  }
 }
