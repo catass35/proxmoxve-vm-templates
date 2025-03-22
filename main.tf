@@ -20,6 +20,7 @@ resource "proxmox_virtual_environment_vm" "t2_micro" {
     datastore_id = var.storage_pool
     size = "16G"
     type = "scsi"
+    interface = "virtio0"
   }
 
   network_device {
