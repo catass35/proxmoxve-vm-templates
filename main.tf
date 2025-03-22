@@ -6,7 +6,7 @@ resource "proxmox_virtual_environment_vm" "t2_micro" {
   started     = false
 
   description = "Managed by Terraform"
-  tags        = ["terraform, "alpine"]
+  tags        = ["terraform", "alpine"]
 
   cpu {
     cores = 1
