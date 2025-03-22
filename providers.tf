@@ -7,10 +7,6 @@ terraform {
   }
 }
 
-variable "api_token" {
-   type=string
-}
-
 provider "proxmox" {
   endpoint  = "https://192.168.1.58:8006/"
   api_token = "terraform-prov@pve!terraform-api=${var.api_token}"
