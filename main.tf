@@ -195,6 +195,6 @@ resource "proxmox_virtual_environment_file" "alpine_extended_3_21_3_img" {
   datastore_id = "local"
   node_name    = "proxmoxve"
   source_file {
-    path = "local:iso/alpine-extended-3.21.1-x86_64.iso"
+    path = "iso/alpine-extended-3.21.1-x86_64.iso"
   }
 }
