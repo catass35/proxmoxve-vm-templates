@@ -24,6 +24,7 @@ resource "proxmox_virtual_environment_vm" "t2_micro" {
     size = 16
     interface = "virtio0"
     file_format = "raw"
+    file_id = proxmox_virtual_environment_file.alpine_extended_3_21_3_img.id
   }
 
   network_device {
@@ -70,6 +71,7 @@ resource "proxmox_virtual_environment_vm" "t2_small" {
     size = 16
     interface = "virtio0"
     file_format = "raw"
+    file_id = proxmox_virtual_environment_file.alpine_extended_3_21_3_img.id
   }
 
   network_device {
@@ -116,6 +118,7 @@ resource "proxmox_virtual_environment_vm" "t2_medium" {
     size = 16
     interface = "virtio0"
     file_format = "raw"
+    file_id = proxmox_virtual_environment_file.alpine_extended_3_21_3_img.id
   }
 
   network_device {
@@ -142,6 +145,7 @@ resource "proxmox_virtual_environment_vm" "t2_medium" {
 resource "proxmox_virtual_environment_vm" "t2_large" {
   name        = "t2-large"
   node_name   = "proxmoxve"
+  
 
   template    = true
   started     = false
@@ -162,6 +166,7 @@ resource "proxmox_virtual_environment_vm" "t2_large" {
     size = 16
     interface = "virtio0"
     file_format = "raw"
+    file_id = proxmox_virtual_environment_file.alpine_extended_3_21_3_img.id
   }
 
   network_device {
@@ -180,4 +185,16 @@ resource "proxmox_virtual_environment_vm" "t2_large" {
     }
   }
 
+}
+
+###################################################################################################################
+###                                                 alpine-extended iso                                          ##
+###################################################################################################################
+resource "proxmox_virtual_environment_file" "alpine_extended_3_21_3_img" {
+  content_type = "iso"
+  datastore_id = "local"
+  node_name    = "proxmoxve"
+  source_file {
+    path = "local:iso/alpine-extended-3.21.1-x86_64.iso"
+  }
 }
